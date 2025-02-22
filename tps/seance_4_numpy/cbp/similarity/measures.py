@@ -1,8 +1,11 @@
 import math
-import numpy as np
 
 def euclidean_sim(a,b):
-    return np.exp(-np.linalg.norm(a-b,axis=(a.ndim-1)))
+    res = 0.
+    for i in range(len(a)):
+        res = res + (a[i] - b[i])**2
+    res = math.exp(-math.sqrt(res))
+    return res
 
 def dot(a,b):
     r = 0.
