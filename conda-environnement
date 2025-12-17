@@ -1,0 +1,6 @@
+conda create --name l3sv python=3.10 numpy biopython pandas scikit-learn matplotlib seaborn nb_conda pymysql cartopy jupyter scikit-image
+conda activate l3sv
+conda install -c conda-forge jupyter_contrib_nbextensions
+jupyter contrib nbextension install --sys-prefix 
+conda install notebook=5.7.6
+conda env export --name l3sv > l3sv.yml
