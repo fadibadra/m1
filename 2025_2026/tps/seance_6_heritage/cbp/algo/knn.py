@@ -29,15 +29,14 @@ def tri_bulle(tab):
     sorted_values = t
     return (sorted_values, indices)
 
-from decimal import Decimal, ROUND_HALF_UP
-def round_up(num):
-    return int(Decimal(num).quantize(Decimal('1'), rounding=ROUND_HALF_UP))
-
 def vote_majoritaire(classes_des_voisins):
-    vote = None
-    moy = sum(classes_des_voisins)/len(classes_des_voisins)
-    vote = round_up(moy)
-    return vote
+    counts = {}
+    for c in classes_des_voisins:
+        if c not in counts:
+            counts[c] = 0
+        else:
+            counts[c] = counts[c] + 1
+    return max(counts, key=counts.get)
 
 def kneighbors(x, X_cb, sim, n_neighbors=3, return_similarities=False):
     (sim_values, indices) = tri_bulle(similarites(x, X_cb, sim))

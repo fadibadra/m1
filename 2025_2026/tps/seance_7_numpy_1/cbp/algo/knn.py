@@ -39,10 +39,10 @@ def vote_majoritaire(classes_des_voisins):
     return max(counts, key=counts.get)
 
 def kneighbors(x, X_cb, sim, n_neighbors=3, return_similarities=False):
-    (sim_values, indices) = tri_bulle(similarites(x, X_cb, sim))
+    (ordered_sim_values, indices) = tri_bulle(similarites(x, X_cb, sim))
     kppv = indices[::-1][:n_neighbors]
     if return_similarities:
-        return (kppv, sim_values[::-1][:n_neighbors])
+        return (kppv, ordered_sim_values[::-1][:n_neighbors])
     else:
         return kppv
 
